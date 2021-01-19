@@ -1,7 +1,9 @@
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Random;
-public class Main {
+public class textAdventure {
+    
+
     public static void main(String[] args) {
 
         //Variables and stuff
@@ -14,9 +16,11 @@ public class Main {
         int playerDamageMax=40;
         int runAway=3;
         int healthPotionCarried=5;
-        int healthPotionDrop= 50; 
         int killCounter=0;
+        int healthPotionDrop= 50; 
         boolean gameRunning=true;
+
+
 
         //Game starting
         System.out.println("Welcome to 2020. Can you survive?");
@@ -44,8 +48,14 @@ public class Main {
                         enemyHealth-=playerDamageMax;
                         System.out.println("The "+enemyName+" viciously strikes you.");
                         playerHealthMax-=enemyDamage;
+                        if(playerHealthMax<0) {
+                            System.out.println("You have died. You killed "+killCounter+"monsters.");
+                            gameRunning=false;
+                            break;
+                        }
                         break;
                     case 2:
+                    if(healthPotionCarried>0) {
                     System.out.println("You quickly guzzle your health potion.");
                         if (playerHealthMax > 202-30) {
                             playerHealthMax=202;
@@ -54,6 +64,22 @@ public class Main {
                         }
                         System.out.println("The "+enemyName+" viciously strikes you.");
                         playerHealthMax-=enemyDamage;
+                        if(playerHealthMax<0) {
+                            System.out.println("You have died. You killed "+killCounter+"monsters.");
+                            gameRunning=false;
+                            break;
+                        }
+                    } else {
+                        System.out.println("You have no more health potions!");
+                        System.out.println("The "+enemyName+" viciously strikes you.");
+                        playerHealthMax-=enemyDamage;
+                        if(playerHealthMax<0) {
+                            System.out.println("You have died. You killed "+killCounter+"monsters.");
+                            gameRunning=false;
+                            break;
+                        }
+
+                    }
                         break;
                     case 3:
                         System.out.println("You:");
@@ -80,26 +106,55 @@ public class Main {
                             enemyHealth-=playerDamageMax;
                             System.out.println("The "+enemyName+" viciously strikes you.");
                             playerHealthMax-=enemyDamage;
+                            if(playerHealthMax<0) {
+                                System.out.println("You have died. You killed "+killCounter+"monsters.");
+                                gameRunning=false;
                                 break;
-                            case 2:
-                            System.out.println("You quickly guzzle your health potion.");
-                            if (playerHealthMax > 202-30) {
-                                playerHealthMax=202;
-                            } else {
-                                playerHealthMax+=30;
                             }
-                            System.out.println("The "+enemyName+" viciously strikes you.");
-                            playerHealthMax-=enemyDamage;
                                 break;
+                                case 2:
+                                if(healthPotionCarried>0) {
+                                System.out.println("You quickly guzzle your health potion.");
+                                    if (playerHealthMax > 202-30) {
+                                        playerHealthMax=202;
+                                    } else {
+                                        playerHealthMax+=30;
+                                    }
+                                    System.out.println("The "+enemyName+" viciously strikes you.");
+                                    playerHealthMax-=enemyDamage;
+                                    if(playerHealthMax<0) {
+                                        System.out.println("You have died. You killed "+killCounter+"monsters.");
+                                        gameRunning=false;
+                                        break;
+                                    }
+                                } else {
+                                    System.out.println("You have no more health potions!");
+                                    System.out.println("The "+enemyName+" viciously strikes you.");
+                                    playerHealthMax-=enemyDamage;
+                                    if(playerHealthMax<0) {
+                                        System.out.println("You have died. You killed "+killCounter+"monsters.");
+                                        gameRunning=false;
+                                        break;
+                                    }
+            
+                                }
+                                    break;
                             case 3:
                             if(runAway>0) {
                                 System.out.println("You barely escape the foaming jaws of the "+enemyName+"!");
-                                continue;
+                                enemyHealth=0;
+                                runAway--;
+                                break;
                                 } else {
                                     System.out.println("You strike the "+enemyName+" with your sword!");
                                     enemyHealth-=playerDamageMax;
                                     System.out.println("The "+enemyName+" viciously strikes you.");
                             playerHealthMax-=enemyDamage;
+                            if(playerHealthMax<0) {
+                                System.out.println("You have died. You killed "+killCounter+"monsters.");
+                                gameRunning=false;
+                                break;
+                            }
                                 }
                                 break;
                         
@@ -108,6 +163,11 @@ public class Main {
                             enemyHealth-=playerDamageMax;
                             System.out.println("The "+enemyName+" viciously strikes you.");
                             playerHealthMax-=enemyDamage;
+                            if(playerHealthMax<0) {
+                                System.out.println("You have died. You killed "+killCounter+"monsters.");
+                                gameRunning=false;
+                                break;
+                            }
                              
                                 break;
                         }
@@ -115,13 +175,19 @@ public class Main {
                     case 4:
                     if(runAway>0) {
                     System.out.println("You barely escape the foaming jaws of the "+enemyName+"!");
-                        runAway--;
+                    enemyHealth=0;
+                    runAway--;
                     break;
                     } else {
                         System.out.println("You strike the "+enemyName+" with your sword!");
                         enemyHealth-=playerDamageMax;
                         System.out.println("The "+enemyName+" viciously strikes you.");
                             playerHealthMax-=enemyDamage;
+                            if(playerHealthMax<0) {
+                                System.out.println("You have died. You killed "+killCounter+"monsters.");
+                                gameRunning=false;
+                                break;
+                            }
                     }
                         break;
                 
@@ -130,15 +196,23 @@ public class Main {
                         enemyHealth-=playerDamageMax;
                         System.out.println("The "+enemyName+" viciously strikes you.");
                             playerHealthMax-=enemyDamage;
+                            if(playerHealthMax<0) {
+                                System.out.println("You have died. You killed "+killCounter+" monsters.");
+                                gameRunning=false;
+                                break;
+                            }
                         break;
                 }
 
             }
-            System.out.println("The " + enemyName+" is dead!");
+            System.out.println("The " + enemyName+" is gone!");
             killCounter++;
+            if (myRandomGen.nextInt(100) <= healthPotionDrop) {
+                System.out.println(enemyName+" dropped a health potion. You pick it up.");
+                healthPotionDrop++;
+            }
             System.out.println("------------------------------------------");
 
         }
-        runAway=3;
     }
 }
