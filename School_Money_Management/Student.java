@@ -23,22 +23,17 @@ public class Student {
     public void setGrade(int newGrade) {
         grade=newGrade;
     }
-    public void setFeesToPay(double feesToPay) {
-        this.feesToPay=feesToPay;
+    public void updateFeesToPay(double feesPaid) {
+        this.feesToPay-=feesPaid;
     }
-    public void setFeesPaid(double feesPaid) {
-        this.feesPaid=feesPaid;
+    public void updateFeesPaid(double feesPaid) {
+        this.feesPaid+=feesPaid;
     }
     //identify student method
     public void idStudent() {
         System.out.println("Name: "+name);
         System.out.println("ID: "+id);
         System.out.println("Grade: "+grade);
-    }
-    //pay fees method
-    public void payFees(double fees) {
-        feesPaid+=fees;
-        feesToPay-=fees;
     }
     //getter methods
     public int getId() {
