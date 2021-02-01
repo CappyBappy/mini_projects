@@ -71,4 +71,15 @@ public class School {
         student.updateFeesPaid(feesPaying);
         student.updateFeesToPay(feesPaying);
     }
+        //graduate grade method
+        public void graduate(Student student) {
+            int grade = student.getGrade();
+            grade++;
+            if (grade<13) {
+                student.setGrade(grade);
+            } else {
+                System.out.println(student.getName()+" has graduated!");
+                unenrollStudent(student);
+            }
+         }
 }

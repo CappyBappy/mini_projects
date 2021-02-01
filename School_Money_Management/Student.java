@@ -12,13 +12,10 @@ public class Student {
         this.id=id;
         this.name=name;
         this.grade=grade;
-        feesToPay=1200.90;
-        feesPaid=0;
+        this.feesToPay=1200.90;
+        this.feesPaid=0;
     }
-    //graduate grade method
-    public void graduate() {
-        grade++;
-    }
+
     //setter methods
     public void setGrade(int newGrade) {
         grade=newGrade;
