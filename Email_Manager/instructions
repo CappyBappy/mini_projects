@@ -1,0 +1,6 @@
+App should do this:
+generate an email with this syntax: firstname.lastname@department.company.com
+determine the department from sales, development, accounting
+generate a random string for a password
+set methods for password, mailbox capacity, define alternate email address
+get methods to display name, email, and mailbox capacity
