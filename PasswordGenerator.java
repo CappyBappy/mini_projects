@@ -186,6 +186,24 @@ public class PasswordGenerator {
                     else{
                         numNotChosen=false;
                         String[] password= genericGenerator(charNum);
+
+                        boolean specialsNotAdded=true;
+                        while(specialsNotAdded) {
+                        int rando1= random.nextInt(numbers.length);
+                        int rando2=random.nextInt(password.length);
+                        int rando3= random.nextInt(specialChars.length);
+                        int rando4=random.nextInt(password.length);
+                        int rando5= random.nextInt(capsLetters.length);
+                        int rando6=random.nextInt(password.length);
+                        if(rando2!=rando4&&rando4!=rando6&&rando6!=rando2) {
+                            specialsNotAdded=false;
+                            password[rando2]=numbers[rando1];
+                            password[rando4]=specialChars[rando3];
+                            password[rando6]=capsLetters[rando5];
+                        }
+                        
+
+                        }
                         String pass="";
                         for(int q=0; q<password.length; q++) {
                             pass+=password[q];
