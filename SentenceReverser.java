@@ -24,23 +24,23 @@ public class SentenceReverser {
             }
         }
 
-        for(int i=0;i<input.length()-1;i++) {
+        for(int i=0;i<input.length();i++) {
             if(input.charAt(i) == ' ') {
                 indexOfSpaces.add(i);
             }
         }
         for(int i=0; i<indexOfSpaces.size();i++) {
             if(i==0) {
-                
-                inputArray.add(input.substring(0, (indexOfSpaces.get(i)-1)));
+                inputArray.add(input.substring(0, (indexOfSpaces.get(i))));
             } else {
-                inputArray.add(input.substring((indexOfSpaces.get(i-1)+1), (indexOfSpaces.get(i)-1)));
+                inputArray.add(input.substring((indexOfSpaces.get(i-1)+1), (indexOfSpaces.get(i))));
             }
         }
+        inputArray.add(input.substring(indexOfSpaces.get(indexOfSpaces.size()-1), input.length()-1));
         for(int i=0;i<inputArray.size();i++) {
-            for(int j = 0;j<inputArray.get(i).length()-1; j++) {
+            for(int j = 0;j<inputArray.get(i).length(); j++) {
                 if(arrayContains(punctuation, inputArray.get(i).charAt(j))) {
-                    String newSring = inputArray.get(i).substring(0, j-1);
+                    String newSring = inputArray.get(i).substring(0, j+1);
                     inputArray.set(i, newSring);
                 }
             }
@@ -54,7 +54,9 @@ public class SentenceReverser {
         }   
         for(int i = 0; i<inputArray.size();i++) {
             newString+=inputArray.get(i);
+            if(i!=inputArray.size()-1) {
             newString+=" ";
+            }
         }
         if(lastIsPunct) {
             newString+=lastChar;
@@ -63,6 +65,6 @@ public class SentenceReverser {
     }
     public static void main(String[] args) {
         SentenceReverser myReverser = new SentenceReverser();
-        System.out.println(myReverser.reverse("May the force be with you."));
+        System.out.println(myReverser.reverse("What is UP, my fortinite GAMERZ?"));
     }
 }
