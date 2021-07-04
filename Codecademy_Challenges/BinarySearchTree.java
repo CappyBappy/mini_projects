@@ -1,3 +1,4 @@
+package Codecademy_Challenges;
 //import java.util.ArrayList;
 public class BinarySearchTree {
     //This is code that I used before that i no longer need because I misunderstood the project ;)

@@ -1,3 +1,4 @@
+package Codecademy_Challenges;
 import java.util.ArrayList;
 public class SentenceReverser {
     //yet again, Catherine misunderstood the task at hand...

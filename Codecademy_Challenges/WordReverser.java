@@ -1,4 +1,6 @@
+package Codecademy_Challenges;
 import java.util.ArrayList;
+//there are some slight bugs, can fix if wanted
 
 public class WordReverser {
     //reverses orders of words with punctuation and keeps punctuation in place
